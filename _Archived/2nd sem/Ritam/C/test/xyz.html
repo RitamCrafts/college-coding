@@ -1,0 +1,153 @@
+<div class="relative min-h-screen overflow-hidden bg-[#050816] flex items-center justify-center px-4">
+
+  <!-- background image -->
+  <img
+    src="bg.png"
+    class="absolute inset-0 h-full w-full object-cover opacity-70 blur-[2px]"
+  />
+
+  <!-- dark overlay -->
+  <div class="absolute inset-0 bg-[#050816]/50"></div>
+
+  <!-- glass card -->
+  <div
+    class="relative w-full max-w-5xl rounded-[35px]
+    border border-white/20
+    bg-white/10
+    backdrop-blur-xl
+    shadow-[0_0_40px_rgba(59,130,246,0.25)]
+    p-10"
+  >
+
+    <!-- top icon -->
+    <div class="flex justify-center">
+      <div
+        class="flex h-20 w-20 items-center justify-center
+        rounded-full border border-violet-400/40
+        bg-white/5"
+      >
+        <span class="text-4xl text-violet-400">✓</span>
+      </div>
+    </div>
+
+    <!-- title -->
+    <h1 class="mt-6 text-center text-6xl font-bold text-white">
+      My Todos
+    </h1>
+
+    <p class="mt-3 text-center text-lg text-gray-300">
+      Stay organized. Get things done.
+    </p>
+
+    <!-- input -->
+    <div
+      class="mt-12 flex overflow-hidden rounded-3xl
+      border border-white/10 bg-white/5"
+    >
+      <input
+        type="text"
+        placeholder="What do you want to do?"
+        class="w-full bg-transparent px-8 py-6
+        text-xl text-white
+        placeholder:text-gray-400 outline-none"
+      />
+
+      <button
+        class="m-2 rounded-2xl
+        bg-gradient-to-r from-cyan-400 to-purple-500
+        px-10 text-xl font-semibold text-white
+        transition hover:scale-105"
+      >
+        Add +
+      </button>
+    </div>
+
+    <!-- divider -->
+    <div class="my-8 h-px bg-white/10"></div>
+
+    <!-- todos -->
+    <div class="space-y-5">
+
+      <!-- todo item -->
+      <div
+        class="flex items-center justify-between
+        rounded-3xl border border-white/10
+        bg-white/5 px-8 py-6"
+      >
+        <div class="flex items-center gap-6">
+          <div class="h-8 w-8 rounded-lg border-2 border-cyan-400"></div>
+
+          <p class="text-3xl text-white">
+            learn nodejs
+          </p>
+        </div>
+
+        <div class="flex gap-4">
+          <button
+            class="rounded-2xl bg-white/5
+            p-5 text-2xl text-white"
+          >
+            ✎
+          </button>
+
+          <button
+            class="rounded-2xl bg-red-500/10
+            p-5 text-2xl text-pink-400"
+          >
+            🗑
+          </button>
+        </div>
+      </div>
+
+      <!-- completed -->
+      <div
+        class="flex items-center justify-between
+        rounded-3xl border border-white/10
+        bg-white/5 px-8 py-6"
+      >
+        <div class="flex items-center gap-6">
+
+          <div
+            class="flex h-8 w-8 items-center justify-center
+            rounded-lg bg-violet-500 text-white"
+          >
+            ✓
+          </div>
+
+          <p class="text-3xl text-gray-400 line-through">
+            learn react
+          </p>
+        </div>
+
+        <div class="flex gap-4">
+          <button
+            class="rounded-2xl bg-white/5
+            p-5 text-2xl text-white"
+          >
+            ✎
+          </button>
+
+          <button
+            class="rounded-2xl bg-red-500/10
+            p-5 text-2xl text-pink-400"
+          >
+            🗑
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="mt-10 flex justify-center">
+      <div
+        class="rounded-full border border-white/10
+        bg-white/5 px-8 py-3
+        text-lg text-gray-300"
+      >
+        2 tasks • 1 completed
+      </div>
+    </div>
+
+  </div>
+</div>
