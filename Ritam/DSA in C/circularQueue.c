@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 3
+#define MAX_SIZE 5
 
 struct queue{
     int arr[MAX_SIZE];
