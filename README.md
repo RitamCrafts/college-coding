@@ -8,16 +8,16 @@ Each person has their own branch:
 
 ```text
 main
-├── Ritam
-├── Anish
-└── Souvik
+├── ritam
+├── anish
+└── souvik
 ```
 
 **Do your work only on your own branch.**
 
-* Ritam → `Ritam`
-* Anish → `Anish`
-* Souvik → `Souvik`
+* Ritam → `ritam`
+* Anish → `anish`
+* Souvik → `souvik`
 
 Do not work directly on `main`.
 
