@@ -135,6 +135,7 @@ int main(){
         case 3:
             displayLinkedList(head);
             break;
+            
 
         case 4:
             printf("Exit Successfull.\n");
