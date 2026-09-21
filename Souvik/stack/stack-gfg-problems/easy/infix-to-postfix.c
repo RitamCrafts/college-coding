@@ -119,4 +119,5 @@ int main(){
     char arr[MAX_SIZE] = "A+B-C*D";
     infixToPostFix(s,arr);
     return 0;
-}
+
+};
