@@ -3,57 +3,84 @@
 #include <stdbool.h>
 
 struct node {
-    int data;
+    int val;
     struct node *left;
     struct node *right;
 };
 
+bool isEmpty(struct node *root){
+    return root == NULL;
+}
+
 struct node *createNode(int val){
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
-    newNode->data = val;
+    newNode->val = val;
     newNode->left = NULL;
     newNode->right = NULL;
+
     return newNode;
 }
 
-void preorder(struct node *root){
-    if(root != NULL){
-        printf("%d ",root->data);
-        preorder(root->left);
-        preorder(root->right);
+void preOrder(struct node *root){
+    if(isEmpty(root)){
+        return;
     }
+
+    printf("%d ",root->val);
+    preOrder(root->left);
+    preOrder(root->right);
+
+}
+
+void inOrder(struct node *root){
+    if(isEmpty(root)){
+        return;
+    }
+
+    inOrder(root->left);
+    printf("%d ",root->val);
+    inOrder(root->right);
 }
 
 void postOrder(struct node *root){
-    if(root != NULL){
-        postOrder(root->left);
-        postOrder(root->right);
-        printf("%d ",root->data);
+    if(isEmpty(root)){
+        return;
     }
+
+    postOrder(root->left);
+    postOrder(root->right);
+    printf("%d ",root->val);
 }
 
 int main(){
-    int rootNodeVal;
-    printf("Enter Root Node Value: ");
-    scanf("%d",&rootNodeVal);
+    struct node *root = createNode(4);
+    root->left = createNode(1);
+    root->left->left = createNode(5);
+    root->left->right = createNode(2);
+    root->right = createNode(6);
 
-    struct node *p = createNode(rootNodeVal);
+    int opt;
+    while(true){
+        printf("\n .... MENU .... \n");
+        printf("1. Preorder: \n");
+        printf("2. Postorder: \n");
+        printf("3. Inorder: \n");
+        printf("0. Exit: \n");
+        printf("Choose Your Option: ");
+        scanf("%d",&opt);
 
-    int nodeValOne,nodeValTwo;
-    printf("Enter Value of Node One: ");
-    scanf("%d",&nodeValOne);
-    printf("Enter Value of Node Two: ");
-    scanf("%d",&nodeValTwo);
-    struct node *p1 = createNode(nodeValOne);
-    struct node *p2 = createNode(nodeValTwo);
-    p->left = p1;
-    p->right = p2;
-
-    printf("Preorder Traversal: \n");
-    preorder(p);
-    printf("\n");
-    printf("Postorder Traversal: \n");
-    postOrder(p);
-    printf("\n");
+        if(opt == 1){
+            preOrder(root);
+        }else if(opt == 2){
+            postOrder(root);
+        }else if(opt == 3){
+            inOrder(root);
+        }else if(opt == 0){
+            printf("Exit...\n");
+            return -1;
+        }else{
+            printf("Invalid Choice.\n");
+        }
+    }
     return 0;
 }
