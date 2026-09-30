@@ -46,16 +46,10 @@ struct node *insertEnd(struct node *head, int val){
     return head;
 }
 
-struct node *createLL(struct node *head){
+struct node *createLL(struct node *head, int val){
     if(isEmpty(head)){
-        int val;
-        printf("Enter Node Value: ");
-        scanf("%d",&val);
         head = insertFirst(head,val);
     }else{
-        int val;
-        printf("Enter Node Value: ");
-        scanf("%d",&val);
         head = insertEnd(head,val);
     }
 
@@ -84,6 +78,49 @@ struct node *mergeTwoLinkedList(struct node *headOne, struct node *headTwo){
     tempOne->next = headTwo;
 
     return headOne;
+}
+
+struct node *mergeTwoLinkedListSorted(struct node *headOne, struct node *headTwo){
+    if(headOne == NULL){
+        return headTwo;
+    }
+
+    if(headTwo == NULL){
+        return headOne;
+    }
+
+    if(headOne == NULL && headTwo == NULL){
+        return NULL;
+    }
+
+    struct node *tempOne = headOne;
+    struct node *tempTwo = headTwo;
+
+    struct node *result = NULL;
+
+    while(tempOne != NULL && tempTwo != NULL){
+        if(tempOne->data < tempTwo->data){
+            result = createLL(result,tempOne->data);
+            tempOne = tempOne->next;
+        }else{
+            result = createLL(result,tempTwo->data);
+            tempTwo = tempTwo->next;
+        }
+    }
+
+    while(tempOne != NULL){
+        result = createLL(result,tempOne->data);
+        tempOne = tempOne->next;
+    }
+
+    while (tempTwo != NULL)
+    {
+        result = createLL(result,tempTwo->data);
+        tempTwo = tempTwo->next;
+    }
+    
+
+    return result;
 }
 
 
@@ -116,8 +153,12 @@ int main(){
     headTwo->next->next = createNode(22);
     headTwo->next->next->next = createNode(24);
 
-    headOne = mergeTwoLinkedList(headOne,headTwo);
-    display(headOne);
+    // headOne = mergeTwoLinkedList(headOne,headTwo);
+    // display(headOne);
+
+    struct node *result = NULL;
+    result = mergeTwoLinkedListSorted(headOne,headTwo);
+    display(result);
 
     return 0;
 }
