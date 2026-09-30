@@ -91,6 +91,64 @@ struct node *mergeKLists(struct node **head,int listSize){
     }
     return sortedHead;
 }
+
+struct node *mergeTwoLinkedListSorted(struct node *headOne, struct node *headTwo){
+    if(headOne == NULL){
+        return headTwo;
+    }
+
+    if(headTwo == NULL){
+        return headOne;
+    }
+
+    if(headOne == NULL && headTwo == NULL){
+        return NULL;
+    }
+
+    struct node *tempOne = headOne;
+    struct node *tempTwo = headTwo;
+
+    struct node *result = NULL;
+
+    while(tempOne != NULL && tempTwo != NULL){
+        if(tempOne->val < tempTwo->val){
+            result = createLinkedList(result,tempOne->val);
+            tempOne = tempOne->next;
+        }else{
+            result = createLinkedList(result,tempTwo->val);
+            tempTwo = tempTwo->next;
+        }
+    }
+
+    while(tempOne != NULL){
+        result = createLinkedList(result,tempOne->val);
+        tempOne = tempOne->next;
+    }
+
+    while (tempTwo != NULL)
+    {
+        result = createLinkedList(result,tempTwo->val);
+        tempTwo = tempTwo->next;
+    }
+    
+
+    return result;
+}
+
+struct node *mergeKListSortedOptimal(struct node **head, int listSize){
+    if(head == NULL || listSize == 0){
+        return NULL;
+    }
+
+    struct node *result = mergeTwoLinkedListSorted(head[0],head[1]);
+    for(int i = 2; i<listSize; i++){
+        result = mergeTwoLinkedListSorted(head[i],head[i+1]);
+    }
+
+    struct node *newResult = mergeKListSortedOptimal(head,listSize);
+    return newResult;
+}
+
 void display(struct node *head){
     if(isEmpty(head)){
         printf("Empty Linked list.\n");
@@ -134,7 +192,10 @@ int main(){
     int listSize = 4;
     struct node *newHead = NULL;
 
-    newHead = mergeKLists(lists,listSize);
+    // newHead = mergeKLists(lists,listSize);
+    // display(newHead);
+
+    newHead = mergeKListSortedOptimal(lists,listSize);
     display(newHead);
     return 0;
 }
