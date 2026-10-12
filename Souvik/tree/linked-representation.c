@@ -42,6 +42,23 @@ void inOrder(struct node *root){
     inOrder(root->right);
 }
 
+bool isBST(struct node *root){
+    static struct node *prev = NULL;
+    if(root != NULL){
+        if(!isBST(root->left)){
+            return 0;
+        }
+
+        if(prev != NULL && root->val <= prev->val){
+            return 0;
+        }
+        prev = root;
+        return isBST(root->right);
+    }
+
+    return false;
+}
+
 void postOrder(struct node *root){
     if(isEmpty(root)){
         return;
